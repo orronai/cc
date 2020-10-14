@@ -1,0 +1,27 @@
+html {
+    text-align: center;
+    margin: 1em;
+}
+
+.form-dates, .currencies {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+.date, .currency {
+    margin: 0.5em 1em;
+}
+
+.submit {
+    margin-top: 0.5em;
+}
+
+h2 {
+    margin-top: 3rem;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}

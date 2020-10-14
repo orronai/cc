@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- https://github.com/joshbuchea/HEAD -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Currency Converter Graph</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/my.css">
+    <script src="static/my.js"></script>
+  </head>
+  <body>
+    <h1><span class="badge bg-success">Currency Converter Graph</span></h1>
+    <p>
+      Our website purpose is to help you get graphs of the currencies.<br>
+      Data is provided by <a href="https://www.ecb.europa.eu/home/html/index.en.html">European Central Bank</a>
+    </p>
+    <div id="search">
+      <form id="search-form" class="row">
+        <div class="form-dates">
+          <div class="col-auto starting-date date">
+            <label for="starting-date" class="visually-hidden">Starting Date</label>
+            <input class="form-control dates" type="text" id="starting-date" name="starting-date" placeholder="Starting Date" required>
+          </div>
+          <div class="col-auto ending-date date">
+            <label for="ending-date" class="visually-hidden">Ending Date</label>
+            <input class="form-control dates" type="text" id="ending-date" name="ending-date" placeholder="Ending Date" required>
+          </div>
+        </div>
+        <div class="currencies">
+          <div class="col-auto currency">
+            <label class="form-label visually-hidden" for="base-currencies">Base Currency</label>
+            <input class="form-control" list="base-currency" id="base-currencies" name="base-currency" placeholder="Base Currency" required>
+            <datalist id="base-currency">
+              {% for currency in currencies %}
+                <option value="{{ currency }}">
+              {% endfor %}
+            </datalist>
+          </div>
+          <div class="col-auto currency">
+            <label class="form-label visually-hidden" for="compare-currencies">Compare To</label>
+            <input class="form-control" list="compare-currency" id="compare-currencies" name="compare-currency" placeholder="Compare Currency" required>
+            <datalist id="compare-currency">
+              {% for currency in currencies %}
+                <option value="{{ currency }}">
+              {% endfor %}
+            </datalist>
+          </div>
+        </div>
+        <div class="col submit">
+          <button type="submit" class="btn btn-success">Analyze <i class="fa fa-exchange"></i></button>
+        </div>
+      </form>
+    </div>
+    <h2><span class="badge bg-success d-none" id="result-title">Result</span></h2>
+    <div class="result" id="graph-result">
+      <div id="graph"></div>
+    </div>
+  </body>
+</html>
